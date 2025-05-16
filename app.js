@@ -29,7 +29,6 @@ const swaggerOptions = {
     servers: [
       {
         url: 'http://localhost:3000',
-        url: 'https://evidencia4-production.up.railway.app/',
       },
     ],
   },
