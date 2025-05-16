@@ -15,8 +15,8 @@ app.use(express.static('public'));
 app.use(express.json());
 
 mongoose.connect(MONGO_URI)
-  .then(() => console.log('✅ Conectado a MongoDB'))
-  .catch((err) => console.error('❌ Error al conectar', err));
+  .then(() => console.log('Conectado a MongoDB'))
+  .catch((err) => console.error('Error al conectar', err));
 
 const swaggerOptions = {
   definition: {
