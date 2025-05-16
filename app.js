@@ -91,6 +91,6 @@ app.post('/submit', async (req, res) => {
 });
 
 app.listen(PORT, () => {
-  console.log(`✅ Servidor corriendo en http://localhost:${PORT}`);
-  console.log(`📚 Swagger docs en http://localhost:${PORT}/api-docs`);
+  console.log(`Servidor corriendo en http://localhost:${PORT}`);
+  console.log(`Swagger docs en http://localhost:${PORT}/api-docs`);
 });
