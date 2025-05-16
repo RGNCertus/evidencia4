@@ -1,12 +1,14 @@
+require('dotenv').config();
+
 const express = require('express');
 const mongosse = require('mongoose');
 const Person = require('./models/Person');
 const app = express();
 
+const MONGO_URI=process.env.MONGO_URI;
+
 app.use(express.static('public'));
 app.use(express.json());
-
-const MONGO_URI = "mongodb+srv://kesitoemprendedor777:MongoDBfirstclass@cluster0.vgrkahy.mongodb.net/";
 
 mongosse.connect(MONGO_URI).then(()=>{
     console.log("Se conecto exitosamente");
