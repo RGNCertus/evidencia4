@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form id="form">
+        <input type="text" name="nombre" placeholder="Coloque su nombre"><br>
+        <input type="text" name="apellido" placeholder="Coloque su apellido"><br>
+        <input type="text" name="edad" placeholder="Coloque su edad"><br>
+        <button>REGISTRAR</button>
+    </form>
+    <script>
+        const form = document.getElementById('form');
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            const formData = new FormData(form);
+            const data = Object.fromEntries(formData.entries());
+
+            const response = await fetch('/submit', {
+                method: 'POST',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify(data)
+            });
+
+            if(response.ok){
+                alert("Formulario se envio con exito");
+                form.reset();
+            }else{
+                alert("Error al enviar");
+            }
+        });
+    </script>
+</body>
+</html>
