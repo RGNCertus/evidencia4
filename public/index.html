@@ -1,38 +1,53 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Selección de Butacas</title>
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <form id="form">
-        <input type="text" name="nombre" placeholder="Coloque su nombre"><br>
-        <input type="text" name="apellido" placeholder="Coloque su apellido"><br>
-        <input type="text" name="edad" placeholder="Coloque su edad"><br>
-        <button>SUBIR</button>
-    </form>
-    <script>
-        const form = document.getElementById('form');
-        form.addEventListener('submit', async (e) => {
-            e.preventDefault();
-            
-            const formData = new FormData(form);
-            const data = Object.fromEntries(formData.entries());
+  <div class="container">
+    <aside class="sidebar">
+      <img src="cholos.png" alt="Poster" class="cliente">
+      <h2>CHOLOS EMPERICADOS 2</h2>
+      <p>2D, REGULAR</p>
+      <p>CP SJ LURIGANCHO</p>
+      <p>Hoy, 1 de Abr.</p>
+      <p>🕖 07:15 pm</p>
+      <p>🎞 SALA 9</p>
+      <p class="edad">🔞 Película con restricción de edad</p>
 
-            const response = await fetch('/submit', {
-                method: 'POST',
-                headers: {'Content-Type': 'application/json'},
-                body: JSON.stringify(data)
-            });
+      <div class="ayuda">
+        <p><strong>¿NECESITAS AYUDA?</strong></p>
+        <img src="cliente.png" alt="Client" class="cliente">
+        <p>Contáctanos.</p>
+      </div>
+    </aside>
 
-            if(response.ok){
-                alert("Formulario se envio con exito");
-                form.reset();
-            }else{
-                alert("Error al enviar");
-            }
-        });
-    </script>
+    <main class="main">
+      <h1>1. Selecciona tus butacas</h1>
+      <div class="pantalla">Pantalla</div>
+
+      <div class="sala" id="sala"></div>
+
+      <div class="legend">
+        <div><span class="circle disponible"></span> Disponible</div>
+        <div><span class="circle ocupada"></span> Ocupada</div>
+        <div><span class="circle seleccionada"></span> Seleccionada</div>
+        <div><span class="circle silla">♿</span> Silla de ruedas</div>
+      </div>
+
+      <p class="nota">Todas nuestras salas cuentan con espacios señalizados para sillas de ruedas.</p>
+      <p><strong>Butacas Seleccionadas:</strong> <span id="butacas"></span></p>
+
+      <form id="reservaForm">
+        <input type="hidden" id="butacasInput" name="butacas">
+        <button type="submit" id="continuarBtn" disabled>Continuar</button>
+      </form>
+    </main>
+  </div>
+
+  <script src="script.js"></script>
 </body>
 </html>
