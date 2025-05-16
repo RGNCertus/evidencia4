@@ -1,7 +1,7 @@
 require('dotenv').config();
 
 const express = require('express');
-const mongosse = require('mongoose');
+const mongoose = require('mongoose');
 const Person = require('./models/Person');
 const app = express();
 
@@ -10,7 +10,7 @@ const MONGO_URI=process.env.MONGO_URI;
 app.use(express.static('public'));
 app.use(express.json());
 
-mongosse.connect(MONGO_URI).then(()=>{
+mongoose.connect(MONGO_URI).then(()=>{
     console.log("Se conecto exitosamente");
 }).catch((err)=>{
     console.error("Error encontrado", err);
